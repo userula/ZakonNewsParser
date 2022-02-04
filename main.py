@@ -33,6 +33,7 @@ def getTodaysNews():
     with open("data.json", "w", encoding='utf-8') as file:
         json.dump(total, file, indent=4, ensure_ascii=False)
 
+
 def getNewsInfo(news_list):
     returnData = []
     for link in news_list:
@@ -58,6 +59,7 @@ def getNewsInfo(news_list):
         for e in c:
             content += e.text
 
+        # Collect all article infos into one
         returnData.append({
             "Заголовок: ": title,
             "Контент:": content,
@@ -70,7 +72,10 @@ def getNewsInfo(news_list):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    getTodaysNews()
-    # print_hi('PyCharm')
+    try:
+        getTodaysNews()
+        print("Success!")
+    except:
+        print("Something went wrong")
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
